@@ -30,7 +30,7 @@ function CartSummary() {
           <button className="bg-green-600 py-3 rounded-lg text-2xl text-white border-2 border-green-600 font-bold">
             Checkout
           </button>
-          <button className="text-blue-900 font-extrabold border-2 text-2xl border-gray-500 py-3 rounded-lg">
+          <button className="text-blue-900 font-extrabold bg-white border-2 text-2xl border-gray-500 py-3 rounded-lg">
             Pay<span className="text-sky-700">Tm</span>
           </button>
         </div>
