@@ -24,11 +24,11 @@ function Products() {
 
   return (
     <div
-      className={`w-full px-5 md:px-20 py-8 ${
+      className={`w-full px-5 md:px-20 py-8 pt-6 md:pt-24 ${
         isDarkMode ? "bg-[#1E1E1E] text-white" : "bg-white text-black"
       }`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

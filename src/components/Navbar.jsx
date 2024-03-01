@@ -4,6 +4,7 @@ import { FaRegSun } from "react-icons/fa6";
 import { FaRegMoon } from "react-icons/fa";
 import { useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
@@ -11,11 +12,13 @@ function Navbar() {
   return (
     <>
       <div
-        className={`w-full h-[10vh] shadow-xl relative z-50 flex justify-between items-center px-2 md:px-20 gap-2 md:gap-20 ${
+        className={`w-full h-[10vh] shadow-xl fixed z-50 flex justify-between items-center px-2 md:px-20 gap-2 md:gap-20 ${
           isDarkMode ? "bg-[#121212] text-white" : "bg-white text-black"
         }`}
       >
-        <h1 className="text-3xl font-bold">LOGO</h1>
+        <Link to={"/"}>
+          <h1 className="text-3xl font-bold">LOGO</h1>
+        </Link>
         <input
           className={`w-full hidden md:block text-[#696e79] bg-[#f5f5f6] px-2 py-2 outline-none focus:border-2 rounded-lg focus:border-slate-700 ${
             isDarkMode ? "text-white bg-[#1E1E1E]" : ""
@@ -39,14 +42,18 @@ function Navbar() {
               />
             )}
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <CiHeart size={25} />
-            <p className="text-sm font-semibold">Wishlist</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <IoBagHandleOutline size={25} />
-            <p className="text-sm font-semibold">Cart</p>
-          </div>
+          <Link to={"/wishlist"}>
+            <div className="flex flex-col justify-center items-center">
+              <CiHeart size={25} />
+              <p className="text-sm font-semibold">Wishlist</p>
+            </div>
+          </Link>
+          <Link to={"/cart"}>
+            <div className="flex flex-col justify-center items-center">
+              <IoBagHandleOutline size={25} />
+              <p className="text-sm font-semibold">Cart</p>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="">
