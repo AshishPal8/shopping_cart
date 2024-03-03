@@ -2,9 +2,22 @@ import React, { useContext } from "react";
 import { CiHeart } from "react-icons/ci";
 import { IoBagHandleOutline } from "react-icons/io5";
 import DarkModeContext from "../context/DarkModeContext";
+import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/wishlistContext";
 
 function ProductCard({ product }) {
   const { isDarkMode } = useContext(DarkModeContext);
+  const { addItemToCart } = useContext(CartContext);
+  const { addItemToWishlist } = useContext(WishlistContext);
+
+  const handleAddToCart = () => {
+    addItemToCart(product);
+  };
+
+  const handleAddToWishlist = () => {
+    addItemToWishlist(product);
+    console.log(product);
+  };
 
   return (
     <div
@@ -12,7 +25,10 @@ function ProductCard({ product }) {
         isDarkMode ? "bg-[#222222] text-white" : "bg-white text-black"
       }`}
     >
-      <div className="absolute z-10 right-5 top-5 h-8 w-8 bg-black/40 rounded-full text-white flex justify-center items-center cursor-pointer">
+      <div
+        className="absolute z-10 right-5 top-5 h-8 w-8 bg-black/40 rounded-full text-white flex justify-center items-center cursor-pointer"
+        onClick={handleAddToWishlist}
+      >
         <CiHeart size={25} />
       </div>
       <div className="w-full h-[200px] overflow-hidden mb-2">
@@ -38,7 +54,10 @@ function ProductCard({ product }) {
         </p>
       </div>
       <div className="w-full mt-5">
-        <div className="flex justify-center items-center gap-2 bg-[#0794C5] py-2 font-bold text-lg text-white rounded-full cursor-pointer">
+        <div
+          className="flex justify-center items-center gap-2 bg-[#40A2E3] py-2 font-bold text-lg text-white rounded-full cursor-pointer hover:bg-sky-600"
+          onClick={handleAddToCart}
+        >
           <IoBagHandleOutline size={25} />
           Add to Cart
         </div>

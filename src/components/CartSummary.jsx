@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
+import { CartContext } from "../context/CartContext";
 
 function CartSummary() {
   const { isDarkMode } = useContext(DarkModeContext);
+  const { calculateTotal } = useContext(CartContext);
 
   return (
     <div
@@ -15,7 +17,7 @@ function CartSummary() {
         <div className="mt-3">
           <div className="flex justify-between items-center my-2">
             <h3>Subtotal: </h3>
-            <h3>$23</h3>
+            <h3>${calculateTotal()}</h3>
           </div>
           <div className="flex justify-between items-center my-2">
             <h3>Estimated Tax: </h3>
@@ -27,6 +29,10 @@ function CartSummary() {
           </div>
         </div>
         <div className="border-t-2 border-gray-400 my-3 py-3 flex flex-col gap-4">
+          <div className="flex justify-between items-center my-1">
+            <h3 className="text-xl font-bold">Subtotal: </h3>
+            <h3 className="text-xl font-bold">${calculateTotal()}</h3>
+          </div>
           <button className="bg-green-600 py-3 rounded-lg text-2xl text-white border-2 border-green-600 font-bold">
             Checkout
           </button>
